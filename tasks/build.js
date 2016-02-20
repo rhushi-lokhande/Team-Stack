@@ -14,9 +14,9 @@ var usemin               = require('gulp-usemin');
 var cssRebaseUrls        = require('gulp-css-url-rebase');
 var autoprefixer         = require('gulp-autoprefixer');
 var minifyCss            = require('gulp-minify-css');
-//var angularTemplatecache = require('gulp-angular-templatecache');
+var angularTemplatecache = require('gulp-angular-templatecache');
 var concat               = require('gulp-concat');
-//var ngAnnotate           = require('gulp-ng-annotate');
+var ngAnnotate           = require('gulp-ng-annotate');
 var uglify               = require('gulp-uglify');
 var replace              = require('gulp-replace');
 var revAll               = require('gulp-rev-all');
@@ -72,27 +72,27 @@ gulp.task('cssmin', function () {
     .pipe(gulp.dest('dist/client/'));
 });
 
-// gulp.task('scripts', function () {
-//   var views = gulp.src('client/views/**/*.html')
-//     .pipe(angularTemplatecache({
-//       root: 'views',
-//       module: 'nova'
-//     }));
-// 
-//   var tpls = gulp.src('client/directives/**/*.html')
-//     .pipe(angularTemplatecache({
-//       root: 'directives',
-//       module: 'nova'
-//     }));
-// 
-//   var app = gulp.src('dist/client/app.js');
-// 
-//   return sq({ objectMode: true }, app, views, tpls)
-//     .pipe(concat('app.js'))
-//     .pipe(ngAnnotate())
-//     .pipe(uglify())
-//     .pipe(gulp.dest('dist/client/'));
-// });
+gulp.task('scripts', function () {
+  var views = gulp.src('client/views/**/*.html')
+    .pipe(angularTemplatecache({
+      root: 'views',
+      module: 'rabbitMqTest'
+    }));
+
+  var tpls = gulp.src('client/directives/**/*.html')
+    .pipe(angularTemplatecache({
+      root: 'directives',
+      module: 'rabbitMqTest'
+    }));
+
+  var app = gulp.src('dist/client/app.js');
+
+  return sq({ objectMode: true }, app, views, tpls)
+    .pipe(concat('app.js'))
+    .pipe(ngAnnotate())
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/client/'));
+});
 
 gulp.task('replace', function () {
   return gulp.src('dist/client/index.html')

@@ -1,0 +1,18 @@
+/// <reference path="../../app.d.ts" />
+'use strict';
+angular.module('rabbitMqTest')
+    .config(function ($stateProvider) {
+    $stateProvider
+        .state('signup', {
+        url: '/signup',
+        views: {
+            'app': {
+                templateUrl: 'views/signup/signup.html',
+                controller: 'SignupCtrl',
+                controllerAs: 'vm'
+            }
+        }
+    });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNsaWVudC92aWV3cy9zaWdudXAvc2lnbnVwLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLHVDQUF1QztBQUN2QyxZQUFZLENBQUM7QUFFYixPQUFPLENBQUMsTUFBTSxDQUFDLGNBQWMsQ0FBQztLQUN6QixNQUFNLENBQUMsVUFBUyxjQUFjO0lBRTNCLGNBQWM7U0FDVCxLQUFLLENBQUMsUUFBUSxFQUFFO1FBQ2IsR0FBRyxFQUFFLFNBQVM7UUFDZCxLQUFLLEVBQUU7WUFDSCxLQUFLLEVBQUU7Z0JBQ0gsV0FBVyxFQUFFLDBCQUEwQjtnQkFDdkMsVUFBVSxFQUFFLFlBQVk7Z0JBQ3hCLFlBQVksRUFBRSxJQUFJO2FBQ3JCO1NBQ0o7S0FDSixDQUFDLENBQUM7QUFFWCxDQUFDLENBQUMsQ0FBQyIsImZpbGUiOiJjbGllbnQvdmlld3Mvc2lnbnVwL3NpZ251cC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8vLyA8cmVmZXJlbmNlIHBhdGg9XCIuLi8uLi9hcHAuZC50c1wiIC8+XG4ndXNlIHN0cmljdCc7XG5cbmFuZ3VsYXIubW9kdWxlKCdyYWJiaXRNcVRlc3QnKVxuICAgIC5jb25maWcoZnVuY3Rpb24oJHN0YXRlUHJvdmlkZXIpIHtcblxuICAgICAgICAkc3RhdGVQcm92aWRlclxuICAgICAgICAgICAgLnN0YXRlKCdzaWdudXAnLCB7XG4gICAgICAgICAgICAgICAgdXJsOiAnL3NpZ251cCcsXG4gICAgICAgICAgICAgICAgdmlld3M6IHtcbiAgICAgICAgICAgICAgICAgICAgJ2FwcCc6IHtcbiAgICAgICAgICAgICAgICAgICAgICAgIHRlbXBsYXRlVXJsOiAndmlld3Mvc2lnbnVwL3NpZ251cC5odG1sJyxcbiAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRyb2xsZXI6ICdTaWdudXBDdHJsJyxcbiAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRyb2xsZXJBczogJ3ZtJ1xuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfSk7XG5cbiAgICB9KTtcbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==

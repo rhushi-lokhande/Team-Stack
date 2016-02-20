@@ -1,20 +1,26 @@
 'use strict';
 
 /**
- * Documentation tasks
+ * Inject css/js files in index.html
  */
 
-var gulp    = require('gulp');
-var sassdoc = require('sassdoc');
-var exec    = require('child_process').exec;
+var gulp       = require('gulp');
+var bowerFiles = require('main-bower-files');
+var fileSort   = require('gulp-angular-filesort');
+var inject     = require('gulp-inject');
 
-exports.sassdoc = function () {
-    gulp.src('client/styles/**/*.scss')
-        .pipe(sassdoc({
-            dest: 'docs/sass'
-        }));
-};
+var toInject   = require('./config/filesToInject');
+var toExclude  = require('./config/bowerFilesToExclude');
 
-exports.apidoc = function (done) {
-    exec('npm run apidoc', done);
+module.exports = function () {
+    return gulp.src('client/index.html')
+        .pipe(inject(gulp.src(bowerFiles(), { read: false }), {
+            name: 'bower',
+            relative: 'true',
+            ignorePath: toExclude
+        }))
+        .pipe(inject(
+            gulp.src(toInject).pipe(fileSort()), { relative: true }
+        ))
+        .pipe(gulp.dest('client'));
 };

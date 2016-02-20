@@ -1,0 +1,18 @@
+/// <reference path="../../app.d.ts" />
+'use strict';
+angular.module('rabbitMqTest')
+    .config(function ($stateProvider) {
+    $stateProvider
+        .state('home', {
+        url: '/home',
+        views: {
+            'app': {
+                templateUrl: 'views/home/home.html',
+                controller: 'HomeCtrl',
+                controllerAs: 'vm'
+            }
+        }
+    });
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNsaWVudC92aWV3cy9ob21lL2hvbWUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsdUNBQXVDO0FBQ3ZDLFlBQVksQ0FBQztBQUViLE9BQU8sQ0FBQyxNQUFNLENBQUMsY0FBYyxDQUFDO0tBQ3pCLE1BQU0sQ0FBQyxVQUFTLGNBQWM7SUFFM0IsY0FBYztTQUNULEtBQUssQ0FBQyxNQUFNLEVBQUU7UUFDWCxHQUFHLEVBQUUsT0FBTztRQUNaLEtBQUssRUFBRTtZQUNILEtBQUssRUFBRTtnQkFDSCxXQUFXLEVBQUUsc0JBQXNCO2dCQUNuQyxVQUFVLEVBQUUsVUFBVTtnQkFDdEIsWUFBWSxFQUFFLElBQUk7YUFDckI7U0FDSjtLQUNKLENBQUMsQ0FBQztBQUVYLENBQUMsQ0FBQyxDQUFDIiwiZmlsZSI6ImNsaWVudC92aWV3cy9ob21lL2hvbWUuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvLy8gPHJlZmVyZW5jZSBwYXRoPVwiLi4vLi4vYXBwLmQudHNcIiAvPlxuJ3VzZSBzdHJpY3QnO1xuXG5hbmd1bGFyLm1vZHVsZSgncmFiYml0TXFUZXN0JylcbiAgICAuY29uZmlnKGZ1bmN0aW9uKCRzdGF0ZVByb3ZpZGVyKSB7XG5cbiAgICAgICAgJHN0YXRlUHJvdmlkZXJcbiAgICAgICAgICAgIC5zdGF0ZSgnaG9tZScsIHtcbiAgICAgICAgICAgICAgICB1cmw6ICcvaG9tZScsXG4gICAgICAgICAgICAgICAgdmlld3M6IHtcbiAgICAgICAgICAgICAgICAgICAgJ2FwcCc6IHtcbiAgICAgICAgICAgICAgICAgICAgICAgIHRlbXBsYXRlVXJsOiAndmlld3MvaG9tZS9ob21lLmh0bWwnLFxuICAgICAgICAgICAgICAgICAgICAgICAgY29udHJvbGxlcjogJ0hvbWVDdHJsJyxcbiAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRyb2xsZXJBczogJ3ZtJ1xuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfSk7XG5cbiAgICB9KTtcbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==

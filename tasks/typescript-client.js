@@ -23,13 +23,27 @@ var tsSources = [
     'client/views/**/*.ts', '!client/views/**/*.spec.ts', '!client/views/**/*.e2e.ts'
 ];
 
+
+
 module.exports = function () {
-    var tsResult = gulp.src(tsSources)
+    var tsResult = gulp.src(tsSources, {base: "./"})
         .pipe(sourcemaps.init())
         .pipe(typescript(tsProject));
-
+        
     return tsResult.js
-        .pipe(concat('app.js'))
+        //.pipe(concat('app.js'))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('client/'));
+        .pipe(gulp.dest('./'));
 };
+
+// 
+// module.exports = function () {
+//     var tsResult = gulp.src(tsSources)
+//         .pipe(sourcemaps.init())
+//         .pipe(typescript(tsProject));
+// 
+//     return tsResult.js
+//         .pipe(concat('app.js'))
+//         .pipe(sourcemaps.write())
+//         .pipe(gulp.dest('client/'));
+// };

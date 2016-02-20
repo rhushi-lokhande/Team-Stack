@@ -1,31 +1,45 @@
 'use strict';
 
 /**
- * Git versioning and bump
+ * Control things.
  */
 
-var gulp = require('gulp');
-var fs   = require('fs');
-var bump = require('gulp-bump');
-var git  = require('gulp-git');
+var gulp        = require('gulp');
+var fs          = require('fs');
+var _           = require('lodash');
+var async       = require('async');
+var jshint      = require('gulp-jshint');
+var jscs        = require('gulp-jscs');
+var jscsStylish = require('gulp-jscs-stylish');
 
-module.exports = {
+module.exports = function (done) {
 
-    version: function () {
-        return gulp.src(['./package.json', './bower.json'])
-            .pipe(bump({
-                type: process.argv[3] ? process.argv[3].substr(2) : 'patch'
-            }))
-            .pipe(gulp.dest('./'));
-    },
-
-    bump: function () {
-        fs.readFile('./package.json', function (err, data) {
-            if (err) { return ; }
-            return gulp.src(['./package.json', './bower.json'])
-                .pipe(git.add())
-                .pipe(git.commit('chore(core): bump to ' + JSON.parse(data).version));
-        });
+    function getConfig (file) {
+        return _.merge(
+            JSON.parse(fs.readFileSync('./.jshintrc', 'utf-8')),
+            JSON.parse(fs.readFileSync(file, 'utf-8'))
+        );
     }
+
+    function control (paths, conf) {
+        return function (done) {
+            gulp.src(paths)
+                .pipe(jshint(conf))
+                .pipe(jshint.reporter('jshint-stylish'))
+                .on('finish', function () {
+                    gulp.src(paths)
+                        .pipe(jscs())
+                        .on('error', function () {})
+                        .pipe(jscsStylish())
+                        .on('end', done);
+                });
+        };
+    }
+
+    async.series([
+        control(['client/**/*.js', '!client/bower_components/**'], getConfig('./client/.jshintrc')),
+        control(['server/**/*.js'], getConfig('./server/.jshintrc')),
+        control(['gulpfile.js', 'tasks/**/*.js'], getConfig('./server/.jshintrc'))
+    ], done);
 
 };
